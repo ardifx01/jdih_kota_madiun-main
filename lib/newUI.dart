@@ -178,7 +178,7 @@ class newUI extends StatelessWidget {
             buildMenuCard(context,
                 title: 'KONTAK',
                 iconPath: 'assets/img/profil.png',
-                url: 'https://example.com/kontak'),
+                url: 'https://jdih.madiunkota.go.id/kontak'),
           ],
         ),
       ),

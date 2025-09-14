@@ -4,7 +4,13 @@ import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_downloader/flutter_downloader.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
-import 'package:jdih_kota_madiun/newUI.dart';
+import 'screens/main_menu.dart';
+import 'screens/beranda_page.dart';
+import 'screens/profil_page.dart';
+import 'screens/produk_hukum_page.dart';
+import 'screens/dokumen_lainnya_page.dart';
+import 'screens/informasi_statistik_page.dart';
+import 'screens/kontak_page.dart';
 import 'package:page_transition/page_transition.dart';
 
 Future<void> main() async {
@@ -46,7 +52,7 @@ class MyApp extends StatelessWidget {
       title: 'JDIH Kota Madiun',
       home: AnimatedSplashScreen(
         splash: 'assets/img/splash.gif',
-        nextScreen: newUI(),
+        nextScreen: const MainMenu(),
         duration: 3000,
         splashTransition: SplashTransition.fadeTransition,
         pageTransitionType: PageTransitionType.fade,
