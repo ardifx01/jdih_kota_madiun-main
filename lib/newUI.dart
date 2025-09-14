@@ -7,6 +7,8 @@ import 'package:permission_handler/permission_handler.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class newUI extends StatelessWidget {
+  const newUI({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -271,7 +273,7 @@ class WebViewPage extends StatefulWidget {
   final String url;
   final String title;
 
-  WebViewPage({required this.url, required this.title});
+  const WebViewPage({super.key, required this.url, required this.title});
 
   @override
   _WebViewPageState createState() => _WebViewPageState();
@@ -370,7 +372,7 @@ class _WebViewPageState extends State<WebViewPage> {
       body: Stack(
         children: [
           InAppWebView(
-            initialUrlRequest: URLRequest(url: Uri.parse(widget.url)),
+            initialUrlRequest: URLRequest(url: WebUri(widget.url)),
             initialOptions: InAppWebViewGroupOptions(
               crossPlatform: InAppWebViewOptions(
                 clearCache: false,
@@ -527,11 +529,11 @@ class _WebViewPageState extends State<WebViewPage> {
 
               // Jika pengguna menyetujui, lanjutkan proses unduhan
               if (userConsent == true) {
-                final String _url_files = "$url";
-                void _launchURL_files() async => await canLaunch(_url_files)
-                    ? await launch(_url_files)
-                    : throw 'Could not launch $_url_files';
-                _launchURL_files();
+                final String url_files = "$url";
+                void launchURL_files() async => await canLaunch(url_files)
+                    ? await launch(url_files)
+                    : throw 'Could not launch $url_files';
+                launchURL_files();
               } else {
                 print("Unduhan dibatalkan oleh pengguna.");
               }
