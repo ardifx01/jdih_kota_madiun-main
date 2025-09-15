@@ -9,7 +9,7 @@ class InformasiStatistikPage extends StatelessWidget {
     return Scaffold(
       body: InAppWebView(
         initialUrlRequest:
-            URLRequest(url: WebUri('https://jdih.madiunkota.go.id/berita')),
+            URLRequest(url: WebUri('https://jdih.madiunkota.go.id/statistik')),
       ),
     );
   }

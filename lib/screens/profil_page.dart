@@ -32,6 +32,7 @@ class ProfilPage extends StatelessWidget {
         iconTheme: const IconThemeData(color: Colors.white),
         titleTextStyle: const TextStyle(
             color: Colors.white, fontWeight: FontWeight.bold, fontSize: 20),
+        centerTitle: true,
       ),
       body: Container(
         color: const Color(0xFFF6F8FA),
@@ -112,6 +113,7 @@ class _SimpleWebView extends StatelessWidget {
         iconTheme: const IconThemeData(color: Colors.white),
         titleTextStyle: const TextStyle(
             color: Colors.white, fontWeight: FontWeight.bold, fontSize: 20),
+        centerTitle: true,
       ),
       body: InAppWebView(
         initialUrlRequest: URLRequest(url: WebUri(url)),

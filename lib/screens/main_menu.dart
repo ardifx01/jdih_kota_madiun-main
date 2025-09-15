@@ -51,8 +51,8 @@ class _MainMenuState extends State<MainMenu> {
             label: 'DOKUMEN',
           ),
           BottomNavigationBarItem(
-            icon: Image.asset('assets/img/berita.png', width: 28, height: 28),
-            label: 'BERITA',
+            icon: Image.asset('assets/img/bankumaskin.png', width: 28, height: 28),
+            label: 'STATISTIK',
           ),
           BottomNavigationBarItem(
             icon: Image.asset('assets/img/profil.png', width: 28, height: 28),

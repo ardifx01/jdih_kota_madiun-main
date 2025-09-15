@@ -1,85 +1,52 @@
 
 
-# JDIH Kota Madiun
+samples, guidance on mobile development, and a full API reference.
 
-## Konfigurasi Lingkungan Pengembangan
+# JDIH Kota Madiun — Dokumentasi Teknis
 
-### Environment & Tools
+## 1. Ringkasan Perubahan Utama
 
-- **Flutter SDK**: 3.13.9 (pastikan sesuai dengan versi pada pubspec.yaml dan hasil `flutter --version`)
-- **Dart SDK**: 3.1.5
+- Refaktor struktur aplikasi menjadi modular: setiap menu utama dan sub menu dipisah ke file/page sendiri.
+- Implementasi global BottomNavigationBar dengan ikon asset, urutan dan ikon disesuaikan permintaan.
+- Penyesuaian struktur menu dan submenu agar identik dengan versi web, termasuk nested submenu pada Dokumen Lainnya.
+- Seluruh tampilan submenu menggunakan Card, border oranye (#ffb13b), ripple oranye, dan ikon.
+- AppBar seluruh halaman utama dan sub menu kini konsisten: hitam, judul putih tebal, centerTitle: true.
+- Skema warna dan UX diselaraskan dengan website JDIH Kota Madiun.
+- Dokumentasi dan konfigurasi lingkungan pengembangan diperjelas.
+
+## 2. Masalah Teknis yang Ditemui
+
+- Ketidakcocokan versi Gradle, AGP, dan Kotlin dengan Java 21 dan Flutter 3.13.9.
+- Konflik dependency pada pubspec.yaml (plugin tidak kompatibel dengan Flutter versi terbaru).
+- Error build terkait minSdkVersion, compileSdkVersion, dan targetSdkVersion di Android.
+- Warning dan error saat menjalankan flutter pub get dan build (dependency conflict, pub outdated).
+- Error sintaks, import, dan kurung kurawal setelah refaktor struktur kode.
+- Inkonsistensi tampilan AppBar (judul tidak di tengah) pada beberapa halaman.
+- Struktur menu dan submenu belum konsisten dengan versi web.
+
+## 3. Langkah Perbaikan
+
+- Update versi Gradle, AGP, dan Kotlin di file android/build.gradle, android/app/build.gradle, dan gradle wrapper agar kompatibel dengan Java 21 dan Flutter 3.13.9.
+- Update dan sinkronisasi dependency di pubspec.yaml ke versi stable yang kompatibel dengan Flutter terbaru, serta resolve conflict dan warning.
+- Sesuaikan minSdkVersion, compileSdkVersion, dan targetSdkVersion di android/app/build.gradle sesuai requirement Flutter dan plugin.
+- Jalankan perintah flutter pub get, flutter clean, dan build ulang hingga aplikasi berjalan tanpa error.
+- Koreksi error sintaks, import, dan kurung kurawal pada file yang terdampak refaktor.
+- Penambahan properti centerTitle: true pada AppBar di seluruh halaman utama dan sub menu agar tampilan konsisten.
+- Refaktor struktur menu dan submenu agar identik dengan versi web, serta implementasi ListView dan nested submenu sesuai kebutuhan.
+
+## 4. Konfigurasi Lingkungan Pengembangan
+
+- **Flutter SDK**: 3.35.3 (stable)
+- **Dart SDK**: 3.9.2 (stable)
 - **Android Gradle Plugin (AGP)**: 8.1.2
 - **Gradle Wrapper**: 8.2.1
 - **Kotlin**: 1.9.10
 - **Java**: OpenJDK 21 (Java 21)
-- **Android SDK**: API 34 (compileSdkVersion 34, targetSdkVersion 34, minSdkVersion 21)
+- **Android SDK**: 36.1.0-rc1 (compileSdkVersion 36, targetSdkVersion 36, minSdkVersion 21)
 - **Xcode**: 15.x (untuk build iOS, jika diperlukan)
-- **Dependency utama**:
-	- flutter_inappwebview: ^6.0.0
-	- permission_handler: ^11.0.1
-	- (lihat pubspec.yaml untuk daftar lengkap)
+- **Dependency utama**: flutter_inappwebview: ^6.0.0, permission_handler: ^11.0.1 (lihat pubspec.yaml untuk daftar lengkap)
 
-### Perintah Penting
-
-- `flutter pub get` — sinkronisasi dependency
-- `flutter clean` — membersihkan build cache
-- `flutter run` — menjalankan aplikasi
-- `flutter build apk` — build release Android
-- `flutter build ios` — build release iOS
-
----
-
-
-## Catatan Progress (15/09/2025)
-
-
-### 1. Analisis & Perbaikan Konfigurasi Project
-
-- Audit struktur folder dan file project Flutter untuk memastikan kelengkapan pubspec.yaml, direktori android/ios, assets, dan struktur lib/.
-- Jika terjadi error build terkait environment, lakukan penyesuaian versi Gradle, AGP, dan Kotlin agar kompatibel dengan Java 21 dan Flutter 3.13.9. Update file `android/build.gradle`, `android/app/build.gradle`, dan gradle wrapper sesuai kebutuhan.
-- Update dependency pada pubspec.yaml ke versi stabil terbaru, termasuk plugin utama seperti `flutter_inappwebview` dan `permission_handler`.
-- Validasi seluruh dependency dan asset sudah terdaftar di pubspec.yaml, selesaikan konflik dependency dan warning pub outdated.
-- Jalankan perintah `flutter pub get`, `flutter clean`, dan build ulang hingga aplikasi berjalan tanpa error.
-- Untuk Android, pastikan minSdkVersion, compileSdkVersion, dan targetSdkVersion diatur pada 21/34/34 di android/app/build.gradle. Untuk iOS, lakukan pengecekan konfigurasi jika diperlukan.
-
-
-
-### 2. Refaktor Navigasi & Struktur UI
-- Restrukturisasi aplikasi menjadi modular, di mana setiap menu utama diimplementasikan dalam file/page terpisah.
-- Implementasi global BottomNavigationBar menggunakan ikon asset untuk konsistensi dengan desain web.
-- Penyesuaian urutan dan ikon navbar sesuai permintaan, termasuk integrasi menu Kontak ke dalam submenu Profil.
-
-
-
-### 3. Menu & Submenu Konsisten Web
-- Penyesuaian struktur menu utama dan submenu agar identik dengan struktur pada web/newUI.dart.
-- Implementasi ListView untuk submenu pada Profil, Produk Hukum, Dokumen Lainnya, dan menu lain yang memiliki sub menu.
-- Pengelompokan submenu Dokumen Lainnya sesuai permintaan (nested submenu: Monografi Hukum, Putusan/Yurisprudensi, Surat Edaran, dan lain-lain).
-
-
-
-### 4. Penyempurnaan Tampilan
-- Seluruh halaman submenu menggunakan Card, ikon, border oranye (#ffb13b), efek ripple oranye, dan AppBar hitam dengan judul putih tebal di tengah.
-- Skema warna dan UX diselaraskan dengan website JDIH Kota Madiun.
-
-
-
-### 5. Perbaikan Error & Validasi
-- Koreksi error sintaks, kurung kurawal, dan import yang terdeteksi selama proses pengembangan.
-- Validasi seluruh halaman dan navigasi agar berjalan tanpa error.
-- Seluruh AppBar (termasuk di WebView) dipastikan memiliki judul di tengah.
-
-
-
-### 6. Dokumentasi & Komunikasi
-- Dokumentasikan setiap perubahan secara ringkas dan sistematis.
-- Implementasikan seluruh permintaan perubahan UI/UX, struktur, dan navigasi sesuai instruksi dan best practice pengembangan aplikasi.
-
----
-
-samples, guidance on mobile development, and a full API reference.
-
-## Getting Started
+## 5. Build & Jalankan Aplikasi
 
 1. Pastikan seluruh environment sesuai dengan konfigurasi di atas.
 2. Jalankan `flutter pub get` untuk mengunduh dependency.

@@ -5,13 +5,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_downloader/flutter_downloader.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'screens/main_menu.dart';
-import 'screens/beranda_page.dart';
-import 'screens/profil_page.dart';
-import 'screens/produk_hukum_page.dart';
-import 'screens/dokumen_lainnya_page.dart';
-import 'screens/informasi_statistik_page.dart';
-import 'screens/kontak_page.dart';
-import 'package:page_transition/page_transition.dart';
+// import 'screens/beranda_page.dart';
+// import 'screens/profil_page.dart';
+// import 'screens/produk_hukum_page.dart';
+// import 'screens/dokumen_lainnya_page.dart';
+// import 'screens/informasi_statistik_page.dart';
+// import 'screens/kontak_page.dart';
+// import 'package:page_transition/page_transition.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -55,7 +55,7 @@ class MyApp extends StatelessWidget {
         nextScreen: const MainMenu(),
         duration: 3000,
         splashTransition: SplashTransition.fadeTransition,
-        pageTransitionType: PageTransitionType.fade,
+        // pageTransitionType: PageTransitionType.fade,
         splashIconSize: double.infinity,
         backgroundColor: const Color(0xffe5e5e5),
       ),
